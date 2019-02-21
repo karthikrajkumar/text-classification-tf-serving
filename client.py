@@ -5,8 +5,8 @@ import time
 
 
 def main():
-    text = 'it is so bad.'
-    # text = 'nice buying experience.'
+    # text = 'it is so bad.'
+    text = 'nice buying experience.'
 
     input_data = {"text": text}
 

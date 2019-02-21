@@ -29,9 +29,9 @@ class TextClassificationHandler(tornado.web.RequestHandler):
 
     def prepare(self):
         print('prepare...')
-        # data = tornado.escape.json_decode(self.request.body)
-        # text = data.get('text', '')
-        # self.input_x = self.preprocess_input(text)
+        data = tornado.escape.json_decode(self.request.body)
+        text = data.get('text', '')
+        self.input_x = self.preprocess_input(text)
 
     def preprocess_input(self, input_data):
         input_x = np.array(list(self.vocab_prosessor.transform([input_data]))).astype(np.int32)
@@ -44,9 +44,6 @@ class TextClassificationHandler(tornado.web.RequestHandler):
     def post(self):
         """处理POST请求，预处理输入文本，并向TensorFlow Serving服务请求模型推理结果."""
         print('POST request.')
-        data = tornado.escape.json_decode(self.request.body)
-        text = data.get('text', '')
-        self.input_x = self.preprocess_input(text)
 
         self.tf_request.inputs['input_x'].CopyFrom(
             tf.contrib.util.make_tensor_proto(self.input_x, shape=[1, 56]))
