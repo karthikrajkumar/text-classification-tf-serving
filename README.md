@@ -10,7 +10,7 @@ Here we use TextCNN model as the example. More detail of the model structure and
 
 ### 2. Export model
 After training the model, we can choose a checkpoint file for serving.
-Copy the checkpoint file to the folder ```./data/trained_models```. The run the following script in the terminal.
+Copy the checkpoint file to the folder ```./data/trained_models```. Then run the following script in the terminal.
 ```bash
 python export_model.py
 ```
@@ -36,15 +36,15 @@ docker run -p 8500:8500 \
 
 ### 4. Start tornado service
 Tensorflow serving only accept the specific format of input data that is suitable for the model.
-However, most time we need to do some preprocessing on the original data before feed into the model.
-Here we use [tornado](http://www.tornadoweb.org) (a python web framework and asynchronous networking library) to build a service that can transform the original input data to the data format that suitable to the model and invoke tensorflow serving to return the prediction result to the client.
+However, most time we need to do some preprocessing on the original data before feeding into the model.
+Here we use [tornado](http://www.tornadoweb.org) (a python web framework and asynchronous networking library) to build a service that can transform the original input data into the format that suitable for the model and invoke tensorflow serving to return the prediction result for the client.
 
 Run the following to start the service:
 ```bash
 python service.py
 ```
 
-P.S. you can run the file ```run_serving.sh``` to finish step 2~4 together.  
+<P.S. you can run the file ```run_serving.sh``` to finish step 2~4 together.>
 
 ### 5. Use a client to check the service
 I wrote a simple client python file: ```client.py```, you can run this to check the tensorflow serving.
