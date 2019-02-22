@@ -24,7 +24,7 @@ class TextClassificationHandler(tornado.web.RequestHandler):
         self.tf_request.model_spec.signature_name = 'text_classification_tf_serving'  # 签名名称
 
         # load the vocabulary
-        vocab_path = './data/vocab'
+        vocab_path = './data/trained_models/vocab'
         self.vocab_prosessor = learn.preprocessing.VocabularyProcessor.restore(vocab_path)
 
     def prepare(self):

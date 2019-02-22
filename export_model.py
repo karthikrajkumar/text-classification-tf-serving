@@ -5,7 +5,7 @@ import tensorflow as tf
 
 
 def main(_):
-    checkpoint_file = './data/model-5500'
+    checkpoint_file = './data/trained_models/model-5500'
     print('Loaded the latest checkpoint: <{}>\n'.format(checkpoint_file))
 
     graph = tf.Graph()
